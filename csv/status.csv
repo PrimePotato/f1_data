@@ -1,3 +1,4 @@
+statusId,status
 1,"Finished"
 2,"Disqualified"
 3,"Accident"
@@ -132,3 +133,4 @@
 134,"+38 Laps"
 135,"Brake duct"
 136,"Seat"
+137,"Damage"

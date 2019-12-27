@@ -9,7 +9,7 @@ tables_csv = {
     Circuit: r'csv\circuits.csv',
     Result: r'csv\results.csv',
     Race: r'csv\races.csv',
-    Driver: r'csv\driver.csv',
+    Driver: r'csv\drivers.csv',
     DriverStanding: r'csv\driver_standings.csv',
     Qualifying: r'csv\qualifying.csv',
     # 'results': r'C:\Users\naked\Downloads\f1db_csv\constructor_results.csv',
@@ -26,9 +26,9 @@ for table, csv in tables_csv.items():
     db.session.commit()
 
     logging.debug('Uploading data to table {}'.format(table.__table__.name))
-    df = pd.read_csv(csv, header=None, index_col=None, na_values=r'\N')
+    df = pd.read_csv(csv, header=0, index_col=None, na_values=r'\N')
     df.columns = table.__table__.columns.keys()
-    df.to_sql(table.__table__.name, db.engine, if_exists='append', index=False, chunksize=50)
+    df.to_sql(table.__table__.name, db.engine, if_exists='replace', index=False, chunksize=50)
 
     logging.info('Completed upload for table {}'.format(table.__table__.name))
     # except Exception:
