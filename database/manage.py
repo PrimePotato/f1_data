@@ -11,6 +11,7 @@ migrate = Migrate(app, db)
 
 
 class Circuit(db.Model):
+    __tablename__ = 'circuits'
     circuitId = db.Column(db.Integer, primary_key=True)
     circuitRef = db.Column(db.String(255))
     name = db.Column(db.String(255))
@@ -23,6 +24,7 @@ class Circuit(db.Model):
 
 
 class DriverStanding(db.Model):
+    __tablename__ = 'driver_standings'
     driverStandingsId = db.Column(db.Integer, primary_key=True)
     raceId = db.Column(db.Integer)
     driverId = db.Column(db.Integer)
@@ -33,6 +35,7 @@ class DriverStanding(db.Model):
 
 
 class Driver(db.Model):
+    __tablename__ = 'drivers'
     driverId = db.Column(db.Integer, primary_key=True)
     driverRef = db.Column(db.Integer)
     number = db.Column(db.Integer)
@@ -45,6 +48,7 @@ class Driver(db.Model):
 
 
 class Race(db.Model):
+    __tablename__ = 'races'
     raceId = db.Column(db.Integer, primary_key=True)
     year = db.Column(db.Integer)
     round = db.Column(db.Integer)
@@ -68,6 +72,7 @@ class Qualifying(db.Model):
 
 
 class Result(db.Model):
+    __tablename__ = 'results'
     resultId = db.Column(db.Integer, primary_key=True, nullable=False, default=None)
     raceId = db.Column(db.Integer, nullable=False, default=0)
     driverId = db.Column(db.Integer, nullable=False, default=0)
